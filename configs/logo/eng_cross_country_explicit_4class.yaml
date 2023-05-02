@@ -1,0 +1,25 @@
+data:
+  datasets:
+    CREMA-D:
+      path: datasets/CREMA-D/corpus.yaml
+    JL:
+      path: datasets/JL/corpus.yaml
+    RAVDESS:
+      path: datasets/RAVDESS/corpus.yaml
+    SAVEE:
+      path: datasets/SAVEE/corpus.yaml
+  remove_groups:
+    label:
+      keep:
+        - anger
+        - happiness
+        - neutral
+        - sadness
+  features: wav2vec_c_mean
+model:
+  type: sk/lr
+eval:
+  cv:
+    part: country
+    kfold: -1
+  inner_kfold: -1

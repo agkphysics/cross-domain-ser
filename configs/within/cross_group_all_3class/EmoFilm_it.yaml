@@ -1,0 +1,23 @@
+name: EmoFilm
+data:
+  datasets:
+    EmoFilm_it:
+      path: datasets/EmoFilm/corpus.yaml
+  remove_groups:
+    language:
+      keep:
+      - it
+    label:
+      keep:
+      - anger
+      - happiness
+      - sadness
+  features: wav2vec_c_mean
+model:
+  type: null
+eval:
+  cv:
+    part: film
+    kfold: 5
+  inner_kfold: 2
+  inner_part: film

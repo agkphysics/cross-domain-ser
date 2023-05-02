@@ -1,0 +1,30 @@
+data:
+  datasets:
+    VENEC_us:
+      path: papers/venec_cross_culture/VENEC_full/corpus.yaml
+      subset: all
+  map_groups:
+    country:
+      map:
+        AUS: au
+        IND: in
+        KEN: ke
+        SIN: sg
+        USA: us
+  remove_groups:
+    label:
+      keep:
+      - anger
+      - happiness
+      - sadness
+    country:
+      keep:
+      - us
+  features: wav2vec_c_mean
+model:
+  type: null
+eval:
+  cv:
+    part: speaker
+    kfold: 5
+  inner_kfold: 2

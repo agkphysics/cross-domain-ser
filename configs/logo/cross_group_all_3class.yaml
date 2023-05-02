@@ -1,0 +1,203 @@
+# AESDD ASED CaFE CREMA-D EMOVO MESD Portuguese URDU IEMOCAP MSP-IMPROV CMU-MOSEI MSP-PODCAST DEMoS EESC ShEMO EmoFilm_en EmoFilm_it EmoFilm_es JL RAVDESS SAVEE ESD_en ESD_zh VENEC_au VENEC_in VENEC_sg VENEC_ke VENEC_us MELD SmartKom SUBESCO EMO-DB eNTERFACE TESS
+data:
+  datasets:
+    AESDD:
+      path: datasets/AESDD/corpus.yaml
+    ASED:
+      path: datasets/ASED/corpus.yaml
+    CaFE:
+      path: datasets/CaFE/corpus.yaml
+    CREMA-D:
+      path: datasets/CREMA-D/corpus.yaml
+    EMOVO:
+      path: datasets/EMOVO/corpus.yaml
+    MESD:
+      path: datasets/MESD/corpus.yaml
+      remove_groups:
+        voice:
+          keep:
+          - F
+          - M
+      rename_annotations:
+        corpus: mesd_corpus
+    Portuguese:
+      path: datasets/Portuguese/corpus.yaml
+    URDU:
+      path: datasets/URDU/corpus.yaml
+    IEMOCAP:
+      path: datasets/IEMOCAP/corpus.yaml
+      map_groups:
+        label:
+          map:
+            excitement: happiness
+    MSP-IMPROV:
+      path: datasets/MSP-IMPROV/corpus.yaml
+    CMU-MOSEI:
+      path: datasets/CMU-MOSEI/corpus.yaml
+      subset: train_labels
+      rename_annotations:
+        label_plu: label
+    MSP-PODCAST:
+      path: datasets/MSP-PODCAST/corpus.yaml
+      subset: train
+    DEMoS:
+      path: datasets/DEMoS/corpus.yaml
+      subset: all
+      remove_groups:
+        prototypicality:
+          drop:
+            - NP
+    EESC:
+      path: datasets/EESC/corpus.yaml
+      map_groups:
+        label:
+          map:
+            joy: happiness
+    ShEMO:
+      path: datasets/ShEMO/corpus.yaml
+    EmoFilm_en:
+      path: datasets/EmoFilm/corpus.yaml
+      remove_groups:
+        language:
+          keep:
+          - en
+    EmoFilm_it:
+      path: datasets/EmoFilm/corpus.yaml
+      remove_groups:
+        language:
+          keep:
+          - it
+    EmoFilm_es:
+      path: datasets/EmoFilm/corpus.yaml
+      remove_groups:
+        language:
+          keep:
+          - es
+    JL:
+      path: datasets/JL/corpus.yaml
+    RAVDESS:
+      path: datasets/RAVDESS/corpus.yaml
+    SAVEE:
+      path: datasets/SAVEE/corpus.yaml
+    ESD_en:
+      path: datasets/ESD/corpus.yaml
+      subset: train
+      remove_groups:
+        language:
+          keep:
+          - en
+    ESD_zh:
+      path: datasets/ESD/corpus.yaml
+      subset: train
+      remove_groups:
+        language:
+          keep:
+          - zh
+    VENEC_au:
+      path: papers/venec_cross_culture/VENEC_full/corpus.yaml
+      map_groups:
+        country:
+          map:
+            AUS: au
+            IND: in
+            KEN: ke
+            SIN: sg
+            USA: us
+      remove_groups:
+        country:
+          keep:
+          - au
+    VENEC_in:
+      path: papers/venec_cross_culture/VENEC_full/corpus.yaml
+      map_groups:
+        country:
+          map:
+            AUS: au
+            IND: in
+            KEN: ke
+            SIN: sg
+            USA: us
+      remove_groups:
+        country:
+          keep:
+          - in
+    VENEC_ke:
+      path: papers/venec_cross_culture/VENEC_full/corpus.yaml
+      map_groups:
+        country:
+          map:
+            AUS: au
+            IND: in
+            KEN: ke
+            SIN: sg
+            USA: us
+      remove_groups:
+        country:
+          keep:
+          - ke
+    VENEC_sg:
+      path: papers/venec_cross_culture/VENEC_full/corpus.yaml
+      map_groups:
+        country:
+          map:
+            AUS: au
+            IND: in
+            KEN: ke
+            SIN: sg
+            USA: us
+      remove_groups:
+        country:
+          keep:
+          - sg
+    VENEC_us:
+      path: papers/venec_cross_culture/VENEC_full/corpus.yaml
+      map_groups:
+        country:
+          map:
+            AUS: au
+            IND: in
+            KEN: ke
+            SIN: sg
+            USA: us
+      remove_groups:
+        country:
+          keep:
+          - us
+    MELD:
+      path: datasets/MELD/corpus.yaml
+      subset: train
+      map_groups:
+        label:
+          map:
+            joy: happiness
+    SmartKom:
+      path: datasets/SmartKom/corpus.yaml
+      map_groups:
+        label:
+          map:
+            helplessness: sadness
+    SUBESCO:
+      path: datasets/SUBESCO/corpus.yaml
+    EMO-DB:
+      path: datasets/EMO-DB/corpus.yaml
+    eNTERFACE:
+      path: datasets/eNTERFACE/corpus.yaml
+    TESS:
+      path: datasets/TESS/corpus.yaml
+    MESS:
+      path: datasets/MESS/corpus.yaml
+  features: wav2vec_c_mean
+  remove_groups:
+    label:
+      keep:
+      - anger
+      - happiness
+      - sadness
+model:
+  type: sk/lr
+eval:
+  cv:
+    part: corpus
+    kfold: -1
+  inner_part: corpus
+  inner_kfold: 2

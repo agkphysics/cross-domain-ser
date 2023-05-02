@@ -1,0 +1,49 @@
+data:
+  datasets:
+    IEMOCAP:
+      path: datasets/IEMOCAP/corpus.yaml
+      map_groups:
+        label:
+          map:
+            excitement: happiness
+    MSP-IMPROV:
+      path: datasets/MSP-IMPROV/corpus.yaml
+  features: wav2vec_c_mean
+  remove_groups:
+    label:
+      keep:
+      - anger
+      - happiness
+      - sadness
+      - neutral
+model:
+  type: sk/lr
+eval:
+  cv:
+    part: corpus
+    kfold: -1
+  inner_part: session
+  inner_kfold: 2
+evals:
+  IEMOCAP:
+    train:
+      groups:
+        corpus:
+          keep:
+          - MSP-IMPROV
+    test:
+      groups:
+        corpus:
+          keep:
+          - IEMOCAP
+  MSP-IMPROV:
+    train:
+      groups:
+        corpus:
+          keep:
+          - IEMOCAP
+    test:
+      groups:
+        corpus:
+          keep:
+          - MSP-IMPROV

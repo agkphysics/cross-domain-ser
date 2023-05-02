@@ -1,0 +1,20 @@
+name: Portuguese
+data:
+  datasets:
+    Portuguese:
+      path: datasets/Portuguese/corpus.yaml
+  remove_groups:
+    label:
+      keep:
+      - anger
+      - happiness
+      - sadness
+  features: wav2vec_c_mean
+model:
+  type: sk/lr
+  config: ${cwdpath:conf/clf/sk/lr/default.yaml}
+eval:
+  cv:
+    part: speaker
+    kfold: -1
+  inner_kfold: 2

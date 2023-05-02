@@ -1,0 +1,92 @@
+name: default
+data:
+  datasets:
+    DEMoS:
+      path: datasets/DEMoS/corpus.yaml
+      features: null
+      read_kwargs: {}
+      subset: all
+      map_groups: {}
+      remove_groups:
+        prototypicality:
+          drop:
+          - NP
+          keep: []
+      rename_annotations: {}
+      select: null
+      clip_seq: null
+      pad_seq: null
+    ESD_en:
+      path: datasets/ESD/corpus.yaml
+      features: null
+      read_kwargs: {}
+      subset: train
+      map_groups: {}
+      remove_groups:
+        language:
+          drop: []
+          keep:
+          - en
+      rename_annotations: {}
+      select: null
+      clip_seq: null
+      pad_seq: null
+  features: wav2vec_c_mean
+  label: null
+  map_groups: {}
+  remove_groups:
+    label:
+      drop: []
+      keep:
+      - anger
+      - happiness
+      - sadness
+  select: null
+  clip_seq: null
+  pad_seq: null
+model:
+  type: sk/lr
+  config: null
+  args: {}
+  args_path: null
+  param_grid: {}
+  param_grid_path: null
+eval:
+  cv: null
+  train:
+    subset: ''
+    groups:
+      corpus:
+        drop: []
+        keep:
+        - DEMoS
+  valid:
+    subset: ''
+    groups:
+      corpus:
+        drop: []
+        keep:
+        - DEMoS
+  test:
+    subset: ''
+    groups:
+      corpus:
+        drop: []
+        keep:
+        - ESD_en
+  inner_kfold: 2
+  inner_part: null
+evals: {}
+training:
+  balanced: true
+  reps: 1
+  normalise: online
+  transform: std
+  seq_transform: global
+  n_jobs: 1
+  verbose: 0
+  label: label
+  sklearn: null
+  pytorch: null
+  tensorflow: null
+results: ''

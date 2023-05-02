@@ -1,0 +1,28 @@
+data:
+  datasets:
+    URDU:
+      path: datasets/URDU/corpus.yaml
+    SmartKom:
+      path: datasets/SmartKom/corpus.yaml
+      map_groups:
+        label:
+          map:
+            helplessness: sadness
+    MSP-PODCAST:
+      path: datasets/MSP-PODCAST/corpus.yaml
+      subset: train
+  features: wav2vec_c_mean
+  remove_groups:
+    label:
+      keep:
+        - anger
+        - happiness
+        - neutral
+        - sadness
+model:
+  type: sk/lr
+eval:
+  cv:
+    part: language
+    kfold: -1
+  inner_kfold: 2

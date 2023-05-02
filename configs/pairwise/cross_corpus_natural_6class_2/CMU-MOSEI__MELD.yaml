@@ -1,0 +1,52 @@
+data:
+  datasets:
+    CMU-MOSEI:
+      path: datasets/CMU-MOSEI/corpus.yaml
+      subset: labels
+      rename_annotations:
+        label_plu: label
+    MELD:
+      path: datasets/MELD/corpus.yaml
+      subset: all
+      map_groups:
+        label:
+          map:
+            joy: happiness
+  features: wav2vec_c_mean
+  remove_groups:
+    label:
+      keep:
+      - anger
+      - happiness
+      - sadness
+      - fear
+      - disgust
+      - surprise
+model:
+  type: sk/lr
+eval:
+  train:
+    groups:
+      corpus:
+        keep:
+        - CMU-MOSEI
+      split:
+        keep:
+        - train
+  valid:
+    groups:
+      corpus:
+        keep:
+        - CMU-MOSEI
+      split:
+        keep:
+        - valid
+  test:
+    groups:
+      corpus:
+        keep:
+        - MELD
+      split:
+        keep:
+        - test
+  inner_kfold: 2

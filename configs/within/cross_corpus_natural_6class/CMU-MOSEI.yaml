@@ -1,0 +1,26 @@
+data:
+  datasets:
+    CMU-MOSEI:
+      path: datasets/CMU-MOSEI/corpus.yaml
+      subset: labels
+      rename_annotations:
+        label_plu: label
+  remove_groups:
+    label:
+      keep:
+      - anger
+      - happiness
+      - sadness
+      - fear
+      - disgust
+      - surprise
+  features: wav2vec_c_mean
+model:
+  type: null
+eval:
+  train:
+    subset: train_labels
+  valid:
+    subset: valid_labels
+  test:
+    subset: test_labels

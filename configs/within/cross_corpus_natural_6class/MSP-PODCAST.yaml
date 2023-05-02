@@ -1,0 +1,25 @@
+name: msp-podcast_mlp_8class
+data:
+  datasets:
+    MSP-PODCAST:
+      path: datasets/MSP-PODCAST/corpus.yaml
+      subset: all
+  remove_groups:
+    label:
+      keep:
+      - anger
+      - happiness
+      - sadness
+      - fear
+      - disgust
+      - surprise
+  features: wav2vec_c_mean
+model:
+  type: null
+eval:
+  train:
+    subset: train
+  valid:
+    subset: validation
+  test:
+    subset: test1

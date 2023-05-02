@@ -1,0 +1,23 @@
+name: EESC
+data:
+  datasets:
+    EESC:
+      path: datasets/EESC/corpus.yaml
+  map_groups:
+    label:
+      map:
+        joy: happiness
+  remove_groups:
+    label:
+      keep:
+        - anger
+        - happiness
+        - neutral
+        - sadness
+  features: wav2vec_c_mean
+model:
+  type: null
+eval:
+  cv:
+    kfold: 10
+  inner_kfold: 2

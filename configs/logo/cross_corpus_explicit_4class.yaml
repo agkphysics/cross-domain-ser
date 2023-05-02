@@ -1,0 +1,61 @@
+data:
+  datasets:
+    CREMA-D:
+      path: datasets/CREMA-D/corpus.yaml
+    EmoV-DB:
+      path: datasets/EmoV-DB/corpus.yaml
+      map_groups:
+        label:
+          map:
+            amusement: happiness
+  features: wav2vec_c_mean
+  remove_groups:
+    label:
+      keep:
+      - anger
+      - happiness
+      - disgust
+      - neutral
+model:
+  type: sk/lr
+eval:
+  cv:
+    part: corpus
+    kfold: -1
+  inner_part: speaker
+  inner_kfold: 2
+evals:
+  EmoV-DB:
+    train:
+      groups:
+        corpus:
+          keep:
+          - CREMA-D
+    valid:
+      groups:
+        corpus:
+          keep:
+          - CREMA-D
+    test:
+      groups:
+        corpus:
+          keep:
+          - EmoV-DB
+    inner_kfold: 2
+  CREMA-D:
+    train:
+      groups:
+        corpus:
+          keep:
+          - EmoV-DB
+    valid:
+      groups:
+        corpus:
+          keep:
+          - EmoV-DB
+    test:
+      groups:
+        corpus:
+          keep:
+          - CREMA-D
+    inner_kfold: 2

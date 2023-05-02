@@ -1,0 +1,40 @@
+data:
+  datasets:
+    MSP-IMPROV:
+      path: datasets/MSP-IMPROV/corpus.yaml
+      subset: all
+    MSP-PODCAST:
+      path: datasets/MSP-PODCAST/corpus.yaml
+      subset: all
+  features: wav2vec_c_mean
+  remove_groups:
+    label:
+      keep:
+      - anger
+      - happiness
+      - sadness
+      - neutral
+model:
+  type: sk/lr
+eval:
+  train:
+    groups:
+      corpus:
+        keep:
+        - MSP-PODCAST
+      split:
+        keep:
+        - Train
+  valid:
+    groups:
+      corpus:
+        keep:
+        - MSP-PODCAST
+      split:
+        keep:
+        - Validation
+  test:
+    groups:
+      corpus:
+        keep:
+        - MSP-IMPROV

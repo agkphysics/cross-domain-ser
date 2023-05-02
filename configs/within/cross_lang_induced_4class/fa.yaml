@@ -1,0 +1,22 @@
+name: ShEMO
+data:
+  datasets:
+    ShEMO:
+      path: datasets/ShEMO/corpus.yaml
+      subset: 5class
+  remove_groups:
+    label:
+      keep:
+        - anger
+        - happiness
+        - neutral
+        - sadness
+  features: wav2vec_c_mean
+model:
+  type: null
+eval:
+  cv:
+    part: speaker
+    kfold: 10
+  inner_kfold: 2
+  inner_part: speaker

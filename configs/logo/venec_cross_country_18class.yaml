@@ -1,0 +1,25 @@
+data:
+  datasets:
+    VENEC:
+      path: papers/venec_cross_culture/VENEC_full/corpus.yaml
+      subset: all
+  remove_groups:
+    label:
+      drop:
+      - neutral
+  map_groups:
+    country:
+      map:
+        AUS: au
+        IND: in
+        KEN: ke
+        SIN: sg
+        USA: us
+  features: wav2vec_c_mean
+model:
+  type: sk/lr
+eval:
+  cv:
+    part: country
+    kfold: -1
+  inner_kfold: 2

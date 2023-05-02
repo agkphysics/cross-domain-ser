@@ -1,0 +1,21 @@
+name: MESD
+data:
+  datasets:
+    MESD:
+      path: datasets/MESD/corpus.yaml
+  remove_groups:
+    voice:
+      drop:
+      - C
+    label:
+      keep:
+      - anger
+      - happiness
+      - sadness
+  features: wav2vec_c_mean
+model:
+  type: null
+eval:
+  cv:
+    kfold: 10
+  inner_kfold: 2

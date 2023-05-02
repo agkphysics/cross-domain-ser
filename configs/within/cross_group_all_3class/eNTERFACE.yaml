@@ -1,0 +1,21 @@
+data:
+  datasets:
+    eNTERFACE:
+      path: datasets/eNTERFACE/corpus.yaml
+      subset: no_s6
+  features: wav2vec_c_mean
+  remove_groups:
+    label:
+      keep:
+      - anger
+      - happiness
+      - sadness
+model:
+  type: sk/lr
+  config: ${cwdpath:conf/clf/sk/lr/default.yaml}
+eval:
+  cv:
+    part: speaker
+    kfold: 10
+  inner_kfold: 2
+  inner_part: speaker

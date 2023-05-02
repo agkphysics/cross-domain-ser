@@ -1,0 +1,38 @@
+data:
+  datasets:
+    ASED:
+      path: datasets/ASED/corpus.yaml
+    CaFE:
+      path: datasets/CaFE/corpus.yaml
+    CREMA-D:
+      path: datasets/CREMA-D/corpus.yaml
+    EMO-DB:
+      path: datasets/EMO-DB/corpus.yaml
+    EMOVO:
+      path: datasets/EMOVO/corpus.yaml
+    MESD:
+      path: datasets/MESD/corpus.yaml
+      remove_groups:
+        voice:
+          keep:
+          - F
+          - M
+    Portuguese:
+      path: datasets/Portuguese/corpus.yaml
+    SUBESCO:
+      path: datasets/SUBESCO/corpus.yaml
+  features: wav2vec_c_mean
+  remove_groups:
+    label:
+      keep:
+      - anger
+      - happiness
+      - neutral
+      - sadness
+model:
+  type: sk/lr
+eval:
+  cv:
+    part: language
+    kfold: -1
+  inner_kfold: 2

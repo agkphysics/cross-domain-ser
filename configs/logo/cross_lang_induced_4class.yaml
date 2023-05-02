@@ -1,0 +1,34 @@
+data:
+  datasets:
+    DEMoS:
+      path: datasets/DEMoS/corpus.yaml
+      subset: all
+      remove_groups:
+        prototypicality:
+          drop:
+            - NP
+    EESC:
+      path: datasets/EESC/corpus.yaml
+      map_groups:
+        label:
+          map:
+            joy: happiness
+    ShEMO:
+      path: datasets/ShEMO/corpus.yaml
+    MSP-IMPROV:
+      path: datasets/MSP-IMPROV/corpus.yaml
+  features: wav2vec_c_mean
+  remove_groups:
+    label:
+      keep:
+        - anger
+        - happiness
+        - neutral
+        - sadness
+model:
+  type: sk/lr
+eval:
+  cv:
+    part: language
+    kfold: -1
+  inner_kfold: 2

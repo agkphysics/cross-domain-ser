@@ -1,0 +1,24 @@
+data:
+  datasets:
+    MSP-PODCAST:
+      path: datasets/MSP-PODCAST/corpus.yaml
+      subset: train
+  remove_groups:
+    label:
+      keep:
+      - anger
+      - happiness
+      - sadness
+    gender:
+      keep:
+      - Male
+      - Female
+  features: wav2vec_c_mean
+model:
+  type: null
+eval:
+  cv:
+    part: speaker
+    kfold: 10
+  inner_part: speaker
+  inner_kfold: 2

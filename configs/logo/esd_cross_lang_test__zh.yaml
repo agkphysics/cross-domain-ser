@@ -1,0 +1,27 @@
+data:
+  datasets:
+    ESD:
+      path: datasets/ESD/corpus.yaml
+      subset: all
+  features: wav2vec_c_mean
+model:
+  type: sk/lr
+eval:
+  train:
+    subset: train
+    groups:
+      language:
+        keep:
+        - en
+  valid:
+    subset: evaluation
+    groups:
+      language:
+        keep:
+        - en
+  test:
+    subset: test
+    groups:
+      language:
+        keep:
+        - zh

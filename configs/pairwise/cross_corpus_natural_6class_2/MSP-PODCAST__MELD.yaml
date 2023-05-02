@@ -1,0 +1,50 @@
+data:
+  datasets:
+    MELD:
+      path: datasets/MELD/corpus.yaml
+      subset: all
+      map_groups:
+        label:
+          map:
+            joy: happiness
+    MSP-PODCAST:
+      path: datasets/MSP-PODCAST/corpus.yaml
+      subset: all
+  features: wav2vec_c_mean
+  remove_groups:
+    label:
+      keep:
+      - anger
+      - happiness
+      - sadness
+      - fear
+      - disgust
+      - surprise
+model:
+  type: sk/lr
+eval:
+  train:
+    groups:
+      corpus:
+        keep:
+        - MSP-PODCAST
+      split:
+        keep:
+        - Train
+  valid:
+    groups:
+      corpus:
+        keep:
+        - MSP-PODCAST
+      split:
+        keep:
+        - Validation
+  test:
+    groups:
+      corpus:
+        keep:
+        - MELD
+      split:
+        keep:
+        - test
+  inner_kfold: 2

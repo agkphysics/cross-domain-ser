@@ -1,0 +1,13 @@
+data:
+  datasets:
+    EmoFilm:
+      path: datasets/EmoFilm/corpus.yaml
+  features: wav2vec_c_mean
+model:
+  type: sk/lr
+eval:
+  cv:
+    part: language
+    kfold: -1
+  inner_part: film
+  inner_kfold: 2
