@@ -29,6 +29,18 @@ for examples.
 
 
 ## Running experiments
+Each experiment has a corresponding config file in the `configs/`
+directory. The leave-one-domain-out (LODO) configs are manually created
+and the pairwise configs can be generated using the
+`gen_pairwise_configs.py` Python script:
+```
+python gen_pairwise_configs.py \
+	configs/lodo/cross_lang_explicit_4class_2.yaml \
+	language \
+	am fr en de it es pt bn \
+	--output configs/pairwise/cross_lang_explicit_4class_2/
+```
+
 The experiments are designed to be run from the root of the ERTK
 repository. First you must generate the commands for experiments using
 `gen_runs.sh`:
@@ -39,5 +51,14 @@ bash /path/to/gen_runs.sh > jobs.txt
 
 You can then run multiple experiments in parallel:
 ```
-ertk-util parallel_jobs --failed jobs.txt --cpus $(nproc) jobs.txt > train.log
+ertk-util parallel_jobs \
+	jobs.txt \
+	--failed jobs.txt \
+	--cpus $(nproc) > train.log
 ```
+
+## Viewing results
+The VENEC results can be created and viewed using the
+`VENEC_results.ipynb` Jupyter notebook. The ESD and EmoFilm results can
+be viewed similarly with their respective notebooks. The remaining
+results can be viewed with the `main_results.ipynb` notebook.
